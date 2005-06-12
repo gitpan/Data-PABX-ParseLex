@@ -1,0 +1,15 @@
+--- #YAML:1.0
+name: Data-PABX-ParseLex
+version: 1.00
+author:
+  - Ron Savage <ron@savage.net.au>
+abstract: |-
+  Parse the output of the iSDC PABX's 'lex a e' command.
+license: artistic
+requires:
+  Carp: 0
+provides:
+  Data::PABX::ParseLex:
+    file: lib/Data/PABX/ParseLex.pm
+    version: 1.00
+generated_by: Module::Build version 0.2607

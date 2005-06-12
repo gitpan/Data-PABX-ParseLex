@@ -1,0 +1,4 @@
+Revision history for Perl extension Data::PABX::ParseLex.
+
+1.00  Sun Jun 12 20:37:29 2005
+	- Original version
