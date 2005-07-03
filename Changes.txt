@@ -1,4 +1,7 @@
 Revision history for Perl extension Data::PABX::ParseLex.
 
+1.01  Mon Jun 27 15:35:54 2005
+	- Allow more spaces in the line containing 'lex a e' in the data file
+
 1.00  Sun Jun 12 20:37:29 2005
 	- Original version
