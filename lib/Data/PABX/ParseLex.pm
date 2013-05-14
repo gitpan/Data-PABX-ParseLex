@@ -14,8 +14,6 @@ use strict;
 use warnings;
 no warnings 'redefine';
 
-require 5.005_62;
-
 require Exporter;
 
 use Carp;
@@ -38,7 +36,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 our @EXPORT = qw(
 
 );
-our $VERSION = '1.04';
+our $VERSION = '1.05';
 
 # -----------------------------------------------
 
@@ -341,11 +339,11 @@ sub unexpected
 
 =head1 NAME
 
-C<Data::PABX::ParseLex> - Parse the output of the iSDC PABX's 'lex a e' command.
+Data::PABX::ParseLex - Parse output of /lex a e/ command for the iSDC PABX
 
 =head1 Synopsis
 
-	#!/usr/bin/perl
+	#!/usr/bin/env perl
 
 	use strict;
 	use warnings;
@@ -441,33 +439,33 @@ Each of these keys points to another hash ref with the following keys (listed in
 
 =over 4
 
-=item ksgm_id
+=item o ksgm_id
 
 This would be 'Ron S' above.
 
-=item number_type
+=item o number_type
 
 This comes from the first 2 characters of each line containing an extension.
 
 This would be 'EN' in the first line above, and 'DN' in the third line.
 
-=item pabx_card_type
+=item o pabx_card_type
 
 This would be 'EC' from the field 'EC141702' above.
 
 Typical values: AC, BC, DI, EC, IE, OC.
 
-=item pabx_port
+=item o pabx_port
 
 When the pabx_card_type is AC, EC, IE or OC, this field consists of three sub-fields of 2 digits each:
 
 =over 4
 
-=item Shelf
+=item o Shelf
 
-=item Slot
+=item o Slot
 
-=item Access
+=item o Access
 
 =back
 
@@ -482,57 +480,57 @@ are set to '-'.
 
 The remaining fields on each line are options, and are stored thus:
 
-=item *
+=item o *
 
 Store as key '*' and value '1'.
 
-=item $
+=item o $
 
 Store as key '$' and value '1'.
 
-=item /A\s+(0\d)/
+=item o /A\s+(0\d)/
 
 Store as key 'A' and value $1.
 
-=item ACD
+=item o ACD
 
 Store as key 'ACD' and value 'QUEUE'.
 
-=item AGENT
+=item o AGENT
 
 Store as key 'AGENT' and value 'GROUP'.
 
-=item /(BE|BI|DG|HG|IE|KSGM?|MULT|RE|SPARE)/
+=item o /(BE|BI|DG|HG|IE|KSGM?|MULT|RE|SPARE)/
 
 Store as key $1 and value '1'.
 
-=item /CS\s+(\d{2})/
+=item o /CS\s+(\d{2})/
 
 Store as key 'CS' and value $1.
 
 This is the Class of Service attribute.
 
-=item /D\s+(00(1|2))/
+=item o /D\s+(00(1|2))/
 
 Store as key 'D' and value $1.
 
-=item /II\s+(\d+)/
+=item o /II\s+(\d+)/
 
 Store as key 'II' and value $1.
 
-=item /MLG\s+(\d+)/
+=item o /MLG\s+(\d+)/
 
 Store as key 'MLG' and value $1.
 
-=item /MOH\s+000/
+=item o /MOH\s+000/
 
 Store as key 'MOH' and value '000' (Zeros).
 
-=item /OG\s+(\d+)/
+=item o /OG\s+(\d+)/
 
 Store as key 'OG' and value $1.
 
-=item /RI\s+(\d+)/
+=item o /RI\s+(\d+)/
 
 Store as key 'RI' and value $1.
 
@@ -541,25 +539,25 @@ options can be combined and followed by a single extension, which is what the \d
 is with RI. Since I did not need to process such data, I have not bothered to combine
 such options with the single trailing extension.
 
-=item /TA\s+(\d{2})/
+=item o /TA\s+(\d{2})/
 
 Store as key 'TA' and value $1.
 
-=item /TP\s+(\d{2})/
+=item o /TP\s+(\d{2})/
 
 Store as key 'TP' and value $1.
 
-=item /V\s+(00(1|2))/
+=item o /V\s+(00(1|2))/
 
 Store as key 'V' and value $1.
 
 Where 'V' is not followed by '00\d', the value used is '001'.
 
-=item /(\d+)/
+=item o /(\d+)/
 
 Store as key '#' and value $1.
 
-=item Any other string
+=item o Any other string
 
 Store the string as the key in another internal hash, together with the value 0.
 

@@ -8,23 +8,28 @@ WriteMakefile
 	($] ge '5.005') ?
 	(
 		'AUTHOR' => 'Ron Savage (ron@savage.net.au)',
-		'ABSTRACT' => "Parse the output of the iSDC PABX's 'lex a e' command",
+		'ABSTRACT' => 'Parse output of /lex a e/ command for the iSDC PABX',
     ) : (),
-	clean				=>
+	clean =>
 	{
-		FILES			=> 'blib/* Makefile MANIFEST Data-PABX-ParseLex-*'
+		FILES => 'blib/* Makefile MANIFEST Data-PABX-ParseLex-*'
 	},
-	dist				=>
+	dist =>
 	{
-		COMPRESS		=> 'gzip',
-		SUFFIX			=> 'gz'
+		COMPRESS => 'gzip',
+		SUFFIX   => 'gz'
 	},
-	DISTNAME			=> 'Data-PABX-ParseLex',
-	NAME				=> 'Data::PABX::ParseLex',
-	PL_FILES			=> {},
-	PREREQ_PM			=>
+	DISTNAME  => 'Data-PABX-ParseLex',
+	NAME      => 'Data::PABX::ParseLex',
+	LICENSE   => 'artistic_2',
+	PL_FILES  => {},
+	PREREQ_PM =>
 	{
-		Carp			=> 0,
+		Carp         => 0,
+		Data::Dumper => 2.139,
+		strict       => 0,
+		Test::More   => 0,
+		warnings     => 0,
 	},
-	VERSION_FROM		=> 'lib/Data/PABX/ParseLex.pm',
+	VERSION_FROM => 'lib/Data/PABX/ParseLex.pm',
 );
